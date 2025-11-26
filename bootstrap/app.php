@@ -9,7 +9,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
-        then: function() {}
+        using: function() {}
     )
     ->withMiddleware(function (Middleware $middleware): void {
     })

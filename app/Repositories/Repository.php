@@ -4,6 +4,8 @@ namespace App\Repositories;
 
 use App\Entities\Entity;
 use App\Interfaces\RepositoryInterface;
+use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Database\Eloquent\Collection;
 
 abstract class Repository implements RepositoryInterface
 {
@@ -11,12 +13,12 @@ abstract class Repository implements RepositoryInterface
     {
     }
 
-    public function all(): object
+    public function all(): Collection
     {
         return $this->entity->all();
     }
 
-    public function paginate(?array $filters): object
+    public function paginate(?array $filters): Paginator
     {
         return $this->entity
             ->when($filters, function ($query) use ($filters) {
@@ -46,17 +48,17 @@ abstract class Repository implements RepositoryInterface
             ->simplePaginate(15);
     }
 
-    public function find($id): ?object
+    public function find($id): ?Entity
     {
         return $this->entity->find($id);
     }
 
-    public function findOrFail($id): object
+    public function findOrFail($id): Entity
     {
         return $this->entity->findOrFail($id);
     }
 
-    public function create(array $attributes): object
+    public function create(array $attributes): Entity
     {
         return $this->entity->create($attributes);
     }

@@ -2,17 +2,21 @@
 
 namespace App\Interfaces;
 
+use App\Entities\Entity;
+use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Database\Eloquent\Collection;
+
 interface RepositoryInterface
 {
-    public function all(): object;
+    public function all(): Collection;
 
-    public function paginate(?array $filters): object;
+    public function paginate(?array $filters): Paginator;
 
-    public function find($id): ?object;
+    public function find($id): ?Entity;
 
-    public function findOrFail($id): object;
+    public function findOrFail($id): Entity;
 
-    public function create(array $attributes): object;
+    public function create(array $attributes): Entity;
 
     public function update($id, array $attributes): void;
 

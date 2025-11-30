@@ -5,7 +5,6 @@ namespace Modules\Auth\src\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Modules\Auth\src\Enums\OperatorStatus;
 use Modules\Auth\src\Http\Requests\LoginRequest;
@@ -16,6 +15,7 @@ use Modules\Auth\src\Http\Resources\OperatorResource;
 use Modules\Auth\src\Interfaces\OperatorRepositoryInterface;
 use Modules\Auth\src\Interfaces\PasswordResetTokenRepositoryInterface;
 use Modules\Auth\src\Mail\ResetPassword;
+use Modules\Common\src\Services\MailerooService;
 
 class AuthController extends Controller
 {
@@ -73,8 +73,8 @@ class AuthController extends Controller
             'token' => $token,
         ]);
 
-        Mail::to($operator->email)
-            ->send(new ResetPassword($operator->full_name, $url));
+        MailerooService::send($operator->email, $operator->full_name,
+            new ResetPassword($operator->full_name, $url));
 
         $this->passwordResetTokenRepository->deleteByEmail($operator->email);
         $this->passwordResetTokenRepository->create([

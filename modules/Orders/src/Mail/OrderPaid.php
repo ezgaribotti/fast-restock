@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use Modules\Common\src\Entities\Order;
+use Modules\Orders\src\Entities\Order;
 
 class OrderPaid extends Mailable
 {

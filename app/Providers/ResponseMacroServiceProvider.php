@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\ServiceProvider;
 
@@ -28,7 +28,7 @@ class ResponseMacroServiceProvider extends ServiceProvider
             ]);
         });
 
-        Response::macro('withPaginate', function (Paginator $paginator) {
+        Response::macro('withPaginate', function (AnonymousResourceCollection $paginator) {
             return Response::json([
                 'message' => null,
                 'data' => [

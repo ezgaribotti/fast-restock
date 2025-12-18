@@ -16,7 +16,7 @@ trait ModuleLoader
 
         // Default directory structure for each module
 
-        $paths = config('module.paths');
+        $paths = config('modules.paths');
 
         $paths = new Fluent($paths);
         foreach ($paths as $key => $path) {

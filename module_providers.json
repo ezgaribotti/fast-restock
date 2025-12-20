@@ -4,5 +4,6 @@
     "Modules\\Customers\\CustomerServiceProvider",
     "Modules\\Inventories\\InventoryServiceProvider",
     "Modules\\Payments\\PaymentServiceProvider",
-    "Modules\\Orders\\OrderServiceProvider"
+    "Modules\\Orders\\OrderServiceProvider",
+    "Modules\\Shipments\\ShipmentServiceProvider"
 ]

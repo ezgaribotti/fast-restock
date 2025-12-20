@@ -49,8 +49,8 @@ class StripeService implements StripeServiceInterface
             $payload[$key] = URL::signedRoute($routeName, $parameters);
         }
 
-        $client = new StripeClient($config->secret_key);
         try {
+            $client = new StripeClient($config->secret_key);
             $session = $client->checkout->sessions->create($payload);
         } catch (ApiErrorException $exception) {
             logger()->error($exception->getMessage(), $exception->getJsonBody());
@@ -64,8 +64,8 @@ class StripeService implements StripeServiceInterface
     {
         $secretKey = config('stripe.secret_key');
 
-        $client = new StripeClient($secretKey);
         try {
+            $client = new StripeClient($secretKey);
             $session = $client->checkout->sessions->retrieve($id);
         } catch (ApiErrorException $exception) {
             logger()->error($exception->getMessage(), $exception->getJsonBody());
@@ -79,8 +79,8 @@ class StripeService implements StripeServiceInterface
     {
         $secretKey = config('stripe.secret_key');
 
-        $client = new StripeClient($secretKey);
         try {
+            $client = new StripeClient($secretKey);
             $client->checkout->sessions->expire($id);
 
         } catch (ApiErrorException $exception) {
@@ -105,8 +105,8 @@ class StripeService implements StripeServiceInterface
             ]]
         ];
 
-        $client = new StripeClient($config->secret_key);
         try {
+            $client = new StripeClient($config->secret_key);
             $session = $client->checkout->sessions->update($id, $payload);
 
         } catch (ApiErrorException $exception) {

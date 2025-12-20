@@ -4,8 +4,10 @@ namespace Modules\Common;
 
 use App\Traits\ModuleLoader;
 use Illuminate\Support\ServiceProvider;
+use Modules\Common\src\Interfaces\MailerooServiceInterface;
 use Modules\Common\src\Interfaces\StripeServiceInterface;
 use Modules\Common\src\Providers\EventServiceProvider;
+use Modules\Common\src\Services\MailerooService;
 use Modules\Common\src\Services\StripeService;
 
 class CommonServiceProvider extends ServiceProvider
@@ -24,7 +26,12 @@ class CommonServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->register(EventServiceProvider::class);
+        if ($this->app->runningUnitTests()) {
+
+            // Fakes are used here to avoid unintended service usage in tests
+        }
 
         $this->app->bind(StripeServiceInterface::class, StripeService::class);
+        $this->app->bind(MailerooServiceInterface::class, MailerooService::class);
     }
 }

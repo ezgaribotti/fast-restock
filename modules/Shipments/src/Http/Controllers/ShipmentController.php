@@ -4,9 +4,9 @@ namespace Modules\Shipments\src\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use Modules\Common\src\Enums\PaymentStatus;
 use Modules\Common\src\Http\Resources\UrlToPayResource;
+use Modules\Common\src\Interfaces\MailerooServiceInterface;
 use Modules\Common\src\Interfaces\StripeServiceInterface;
 use Modules\Shipments\src\Http\Requests\StoreShipmentRequest;
 use Modules\Shipments\src\Http\Requests\UpdateShipmentRequest;
@@ -32,6 +32,7 @@ class ShipmentController extends Controller
         protected LogisticsPointRepositoryInterface $logisticsPointRepository,
         protected CountryRepositoryInterface $countryRepository,
         protected StripeServiceInterface $stripeService,
+        protected MailerooServiceInterface $mailerooService,
     )
     {
     }
@@ -116,8 +117,8 @@ class ShipmentController extends Controller
         $shipment = $this->shipmentRepository->find($id);
 
         $customer = $shipment->order->customerAddress->customer;
-        Mail::to($customer->email)
-            ->send(new ShipmentSynced($shipment));
+        $this->mailerooService->send($customer->email, $customer->first_name,
+            new ShipmentSynced($shipment));
 
         return response()->justMessage('Shipment successfully updated.');
     }

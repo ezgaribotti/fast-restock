@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3fd3124aa4be36ca0d255556bec07496",
+    "content-hash": "42ad5653ec260fe06e3b0f3c52327877",
     "packages": [
         {
             "name": "brick/math",
@@ -2081,6 +2081,46 @@
                 }
             ],
             "time": "2025-12-07T16:03:21+00:00"
+        },
+        {
+            "name": "maileroo/maileroo-php-sdk",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maileroo/maileroo-php-sdk.git",
+                "reference": "34306d7f1b693fa42b9e3ef28e3116daaaeff4f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maileroo/maileroo-php-sdk/zipball/34306d7f1b693fa42b9e3ef28e3116daaaeff4f8",
+                "reference": "34306d7f1b693fa42b9e3ef28e3116daaaeff4f8",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Maileroo\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Areeb Majeed"
+                }
+            ],
+            "description": "With this library, you can seamlessly integrate Maileroo's powerful email API into your PHP projects with ease.",
+            "support": {
+                "issues": "https://github.com/maileroo/maileroo-php-sdk/issues",
+                "source": "https://github.com/maileroo/maileroo-php-sdk/tree/2.0.0"
+            },
+            "time": "2025-08-15T07:50:01+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -9460,5 +9500,5 @@
         "php": "^8.2"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }

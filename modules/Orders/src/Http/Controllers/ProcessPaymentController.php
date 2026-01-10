@@ -4,8 +4,8 @@ namespace Modules\Orders\src\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use Modules\Common\src\Enums\PaymentStatus;
+use Modules\Common\src\Interfaces\MailerooServiceInterface;
 use Modules\Common\src\Interfaces\StripeServiceInterface;
 use Modules\Common\src\Services\StripeService;
 use Modules\Orders\src\Events\ShippingPaid;
@@ -21,6 +21,7 @@ class ProcessPaymentController extends Controller
         protected PaymentRepositoryInterface $paymentRepository,
         protected ProductRepositoryInterface $productRepository,
         protected StripeServiceInterface $stripeService,
+        protected MailerooServiceInterface $mailerooService,
     )
     {
     }
@@ -43,8 +44,8 @@ class ProcessPaymentController extends Controller
         }
         $customer = $order->customerAddress->customer;
 
-        Mail::to($customer->email)
-            ->send(new OrderPaid($order, count($session->shipping_options) === 1));
+        $this->mailerooService->send($customer->email, $customer->first_name,
+            new OrderPaid($order, count($session->shipping_options) === 1));
 
         return response('Payment successfully processed.');
     }

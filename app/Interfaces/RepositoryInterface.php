@@ -10,6 +10,8 @@ interface RepositoryInterface
 {
     public function all(): Collection;
 
+    public function count(): int;
+
     public function paginate(?array $filters): Paginator;
 
     public function find($id): ?Entity;

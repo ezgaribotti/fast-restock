@@ -4,6 +4,8 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Laravel\Sanctum\Sanctum;
 use Modules\Common\src\Entities\Operator;
 use Modules\Inventories\src\Entities\Product;
+use Modules\Inventories\src\Jobs\AlertLowStock;
+use Illuminate\Support\Facades\Queue;
 use Tests\TestCase;
 
 uses(TestCase::class, DatabaseTransactions::class);
@@ -47,4 +49,12 @@ test('should delete a product', function () {
     $product = Product::factory()->create();
     $response = $this->deleteJson(route('products.destroy', ['product' => $product]));
     $response->assertOk();
+});
+
+test('should dispatch low stock job when stock is below threshold', function () {
+    Queue::fake();
+    $product = Product::factory()->create(['alert_threshold' => 1]);
+    $product->decrement('stock', $product->stock);
+
+    Queue::assertPushed(AlertLowStock::class);
 });

@@ -4,10 +4,12 @@ namespace Modules\Inventories;
 
 use App\Traits\ModuleLoader;
 use Illuminate\Support\ServiceProvider;
+use Modules\Inventories\src\Entities\Product;
 use Modules\Inventories\src\Interfaces\CategoryRepositoryInterface;
 use Modules\Inventories\src\Interfaces\ProductImageRepositoryInterface;
 use Modules\Inventories\src\Interfaces\ProductRepositoryInterface;
 use Modules\Inventories\src\Interfaces\SupplierRepositoryInterface;
+use Modules\Inventories\src\Observers\StockObserver;
 use Modules\Inventories\src\Repositories\CategoryRepository;
 use Modules\Inventories\src\Repositories\ProductImageRepository;
 use Modules\Inventories\src\Repositories\ProductRepository;
@@ -20,6 +22,7 @@ class InventoryServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->loadModule($this);
+        Product::observe(StockObserver::class);
     }
 
     public function register(): void

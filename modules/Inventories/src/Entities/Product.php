@@ -16,6 +16,7 @@ class Product extends Entity
         'sku',
         'active',
         'stock',
+        'alert_threshold',
         'unit_price',
         'weight',
         'category_id',

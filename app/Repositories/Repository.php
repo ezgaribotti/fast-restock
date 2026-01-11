@@ -19,6 +19,11 @@ abstract class Repository implements RepositoryInterface
         return $this->entity->all();
     }
 
+    public function count(): int
+    {
+        return $this->entity->count();
+    }
+
     public function paginate(?array $filters): Paginator
     {
         return $this->entity

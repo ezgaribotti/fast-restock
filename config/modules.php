@@ -15,6 +15,7 @@ return [
     'providers' => [
         Modules\Common\CommonServiceProvider::class,
         Modules\Auth\AuthServiceProvider::class,
+        Modules\Customers\CustomerServiceProvider::class,
     ],
 
     'paths' => [

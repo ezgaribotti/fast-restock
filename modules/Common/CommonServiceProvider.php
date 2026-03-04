@@ -4,6 +4,8 @@ namespace Modules\Common;
 
 use App\Traits\ModuleLoader;
 use Illuminate\Support\ServiceProvider;
+use Modules\Common\src\Interfaces\StripeServiceInterface;
+use Modules\Common\src\Services\StripeService;
 
 class CommonServiceProvider extends ServiceProvider
 {
@@ -16,5 +18,6 @@ class CommonServiceProvider extends ServiceProvider
 
     public function register(): void
     {
+        $this->app->bind(StripeServiceInterface::class, StripeService::class);
     }
 }

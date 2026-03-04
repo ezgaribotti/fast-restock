@@ -17,6 +17,8 @@ return [
         Modules\Auth\AuthServiceProvider::class,
         Modules\Customers\CustomerServiceProvider::class,
         Modules\Inventories\InventoryServiceProvider::class,
+        Modules\Payments\PaymentServiceProvider::class,
+        Modules\Orders\OrderServiceProvider::class,
     ],
 
     'paths' => [

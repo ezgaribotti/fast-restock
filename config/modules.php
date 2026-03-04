@@ -16,6 +16,7 @@ return [
         Modules\Common\CommonServiceProvider::class,
         Modules\Auth\AuthServiceProvider::class,
         Modules\Customers\CustomerServiceProvider::class,
+        Modules\Inventories\InventoryServiceProvider::class,
     ],
 
     'paths' => [

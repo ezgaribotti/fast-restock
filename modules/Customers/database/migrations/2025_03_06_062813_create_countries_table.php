@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('countries', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->boolean('active')->default(true);
+            $table->boolean('is_active')->default(true);
             $table->string('iso_code');
             $table->timestamps();
         });

@@ -16,7 +16,7 @@ class UpdateProductRequest extends FormRequest
         return [
             'name' => 'required',
             'sku' => 'required',
-            'active' => 'required|boolean',
+            'is_active' => 'required|boolean',
             'unit_price' => 'required|numeric|min:0',
             'weight' => 'required|numeric|min:0',
             'category_id' => 'required|exists:categories,id',

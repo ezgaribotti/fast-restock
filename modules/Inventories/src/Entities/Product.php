@@ -5,6 +5,7 @@ namespace Modules\Inventories\src\Entities;
 use App\Entities\Entity;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Common\src\Entities\Scopes\IsActiveScope;
 use Modules\Inventories\database\Factories\ProductFactory;
 
 class Product extends Entity
@@ -14,7 +15,7 @@ class Product extends Entity
     protected $fillable = [
         'name',
         'sku',
-        'active',
+        'is_active',
         'unit_price',
         'weight',
         'category_id',
@@ -35,6 +36,11 @@ class Product extends Entity
     public function images(): object
     {
         return $this->hasMany(ProductImage::class);
+    }
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope(new IsActiveScope());
     }
 
     protected static function newFactory(): object

@@ -37,7 +37,7 @@ test('should update a product', function () {
     $product = Product::factory()->create();
     $response = $this->putJson(route('products.update', [
         'product' => $product
-    ]), Product::factory()->make(['active' => false])->toArray());
+    ]), Product::factory()->make(['is_active' => false])->toArray());
     $response->assertOk();
 });
 

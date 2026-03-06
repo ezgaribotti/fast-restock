@@ -13,7 +13,7 @@ class ProductSummaryResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'sku' => $this->sku,
-            'active' => $this->active,
+            'is_active' => $this->is_active,
             'unit_price' => $this->unit_price,
         ];
     }

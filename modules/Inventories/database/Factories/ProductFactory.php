@@ -18,7 +18,6 @@ class ProductFactory extends Factory
             'sku' => fake()->unique()->unixTime(),
             'unit_price' => fake()->randomDecimal(),
             'weight' => fake()->randomDecimal(),
-            'stock' => fake()->randomNumber(),
             'category_id' => Category::factory(),
             'supplier_id' => Supplier::factory(),
             'description' => fake()->text(),

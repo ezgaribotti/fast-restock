@@ -16,8 +16,6 @@ class StoreProductRequest extends FormRequest
         return [
             'name' => 'required',
             'sku' => 'required|unique:products,sku',
-            'stock' => 'required|integer',
-            'alert_threshold' => 'integer|min:1',
             'unit_price' => 'required|numeric|min:0',
             'weight' => 'required|numeric|min:0',
             'category_id' => 'required|exists:categories,id',

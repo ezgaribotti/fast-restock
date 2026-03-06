@@ -13,7 +13,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('sku')->unique();
             $table->boolean('active')->default(true);
-            $table->integer('stock')->default(0);
             $table->decimal('unit_price');
             $table->decimal('weight');
             $table->foreignId('category_id')->constrained();

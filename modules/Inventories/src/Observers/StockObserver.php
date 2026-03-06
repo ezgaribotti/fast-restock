@@ -2,7 +2,7 @@
 
 namespace Modules\Inventories\src\Observers;
 
-use Modules\Inventories\src\Entities\Product;
+use Modules\Inventories\src\Entities\Inventory;
 use Modules\Inventories\src\Jobs\AlertLowStock;
 
 class StockObserver
@@ -11,17 +11,17 @@ class StockObserver
     {
     }
 
-    public function updated(Product $product): void
+    public function updated(Inventory $inventory): void
     {
-        if (! $product->alert_threshold) {
+        if (! $inventory->alert_threshold) {
 
             // I don't have a threshold to compare
 
             return;
         }
 
-        if ($product->stock <= $product->alert_threshold) {
-            AlertLowStock::dispatch($product);
+        if ($inventory->stock <= $inventory->alert_threshold) {
+            AlertLowStock::dispatch($inventory);
         }
     }
 }

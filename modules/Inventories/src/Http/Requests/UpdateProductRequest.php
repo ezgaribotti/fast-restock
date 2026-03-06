@@ -17,8 +17,6 @@ class UpdateProductRequest extends FormRequest
             'name' => 'required',
             'sku' => 'required',
             'active' => 'required|boolean',
-            'stock' => 'required|integer',
-            'alert_threshold' => 'integer|min:1',
             'unit_price' => 'required|numeric|min:0',
             'weight' => 'required|numeric|min:0',
             'category_id' => 'required|exists:categories,id',

@@ -14,7 +14,6 @@ class ProductSummaryResource extends JsonResource
             'name' => $this->name,
             'sku' => $this->sku,
             'active' => $this->active,
-            'stock' => $this->stock,
             'unit_price' => $this->unit_price,
         ];
     }

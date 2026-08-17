@@ -18,7 +18,7 @@ class MessageResource extends JsonResource
 
         // Ensure all errors use a standardized HTTP status code
 
-        if (! in_array($statusCode, [200, 400, 401, 403, 404, 422, 429, 500])) {
+        if (! in_array($statusCode, [200, 400, 401, 403, 404, 422, 429, 500, 503])) {
 
             // Any other status code is treated as 500
             $statusCode = 500;

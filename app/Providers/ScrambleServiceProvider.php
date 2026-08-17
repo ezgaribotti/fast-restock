@@ -2,23 +2,19 @@
 
 namespace App\Providers;
 
+use Dedoc\Scramble\Scramble;
+use Dedoc\Scramble\Support\Generator\Operation;
 use Illuminate\Support\ServiceProvider;
 
 class ScrambleServiceProvider extends ServiceProvider
 {
-    /**
-     * Register services.
-     */
     public function register(): void
     {
-        //
+        Scramble::configure()
+            ->withOperationTransformers(function (Operation $operation) {});
     }
 
-    /**
-     * Bootstrap services.
-     */
     public function boot(): void
     {
-        //
     }
 }

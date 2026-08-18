@@ -3,8 +3,8 @@
 namespace App\Interfaces;
 
 use App\Entities\Entity;
-use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\Paginator;
 
 interface RepositoryInterface
 {

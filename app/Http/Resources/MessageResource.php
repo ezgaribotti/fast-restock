@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources;
 
-use App\Data\Data;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -28,18 +27,13 @@ class MessageResource extends JsonResource
 
     public function toArray(Request $request): array
     {
-        return (new class($this->resource) extends Data {
-            public function __construct(
-                public ?string $message
-            )
-            {
-            }
-        })->toArray();
+        return [
+            'message' => __($this->resource),
+        ];
     }
 
     public function withResponse(Request $request, JsonResponse $response): void
     {
-
         $response->setStatusCode($this->statusCode);
     }
 }

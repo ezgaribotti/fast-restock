@@ -18,7 +18,7 @@ describe('customer addresses', function () {
     test('should store a new one', function () {
 
         $data = CustomerAddress::factory()->make()->toArray();
-        $this->postJson(route('customer-addresses.store'), $data)->assertStatus(201);
+        $this->postJson(route('customer-addresses.store'), $data)->assertStatus(200);
     });
 
     test('should delete one', function () {

@@ -25,7 +25,7 @@ describe('customers', function () {
     test('should store a new one', function () {
 
         $data = Customer::factory()->make()->toArray();
-        $this->postJson(route('customers.store'), $data)->assertStatus(201);
+        $this->postJson(route('customers.store'), $data)->assertStatus(200);
     });
 
     test('should return a single one', function () {

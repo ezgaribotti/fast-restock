@@ -33,7 +33,7 @@ describe('operators', function () {
             'password_confirmation' => $password
         ];
 
-        $this->postJson(route('operators.store'), $data)->assertStatus(201);
+        $this->postJson(route('operators.store'), $data)->assertStatus(200);
     });
 
     test('should return a single one', function () {

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Faker\Generator;
 use Faker\Provider\Base;
+use Illuminate\Foundation\Http\Events\RequestHandled;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -30,5 +31,14 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        // Normalize status code 201 before the response is sent
+
+        $abstract = 'events';
+
+        $this->app[$abstract]->listen(RequestHandled::class, function (RequestHandled $event) {
+            if ($event->response->getStatusCode() === 201) {
+                $event->response->setStatusCode(200);
+            }
+        });
     }
 }

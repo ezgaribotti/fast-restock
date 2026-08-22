@@ -16,6 +16,7 @@ return [
         Modules\Common\CommonServiceProvider::class,
         Modules\Auth\AuthServiceProvider::class,
         Modules\Customer\CustomerServiceProvider::class,
+        Modules\Inventory\InventoryServiceProvider::class,
     ],
 
 ];

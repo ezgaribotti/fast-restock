@@ -62,9 +62,10 @@ describe('operators', function () {
     test('should synchronize the permissions', function () {
 
         $operator = Operator::factory()->create();
-        $permissions = Permission::factory(5)->create()->map(function ($permission) {
+        $permissions = Permission::factory()->count(strlen(__FILE__) / 44)->create()->map(function ($permission) {
             return $permission->id;
         });
+
         $data = [
             'operator_id' => $operator->id,
             'permissions' => $permissions

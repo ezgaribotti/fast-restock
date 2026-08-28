@@ -18,6 +18,7 @@ return [
         Modules\Customer\CustomerServiceProvider::class,
         Modules\Inventory\InventoryServiceProvider::class,
         Modules\Order\OrderServiceProvider::class,
+        Modules\Payment\PaymentServiceProvider::class,
     ],
 
 ];

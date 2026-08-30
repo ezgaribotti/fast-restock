@@ -10,6 +10,7 @@ use Modules\Payment\src\Http\Requests\StorePaymentRequest;
 use Modules\Payment\src\Http\Resources\PaymentResource;
 use Modules\Payment\src\Interfaces\OrderRepositoryInterface;
 use Modules\Payment\src\Interfaces\PaymentRepositoryInterface;
+use Modules\Payment\src\Jobs\VerifyPayment;
 use Modules\Payment\src\Services\PaymentContext;
 
 class PaymentController extends Controller
@@ -53,10 +54,10 @@ class PaymentController extends Controller
 
             // Verifies the payment status
 
-            $this->paymentRepository->update($payment,
-                $this->paymentContext->retrieve($payment->reference_id)->toArray());
+            VerifyPayment::dispatchSync($payment);
         }
-        return new PaymentResource($payment);
+        return new PaymentResource(
+            $this->paymentRepository->refresh($payment));
     }
 
     public function destroy(string $id)

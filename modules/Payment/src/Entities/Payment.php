@@ -18,6 +18,7 @@ class Payment extends Entity
         'url',
         'total_amount',
         'paid_at',
+        'locked_at',
     ];
 
     protected $casts = [

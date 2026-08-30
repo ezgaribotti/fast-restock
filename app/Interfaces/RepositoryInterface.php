@@ -16,6 +16,8 @@ interface RepositoryInterface
 
     public function findOrFail($id): Entity;
 
+    public function refresh(Entity $entity): Entity;
+
     public function create(array $attributes): Entity;
 
     public function insertMany(array $values): void;

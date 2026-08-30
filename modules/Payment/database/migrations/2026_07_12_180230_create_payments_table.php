@@ -18,6 +18,7 @@ return new class extends Migration
             $table->decimal('total_amount');
             $table->string('url');
             $table->timestamp('paid_at')->nullable();
+            $table->timestamp('locked_at')->nullable();
             $table->timestamps();
         });
     }

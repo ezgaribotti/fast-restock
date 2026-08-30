@@ -48,6 +48,11 @@ abstract class Repository implements RepositoryInterface
         return $this->entity->findOrFail($id);
     }
 
+    public function refresh(Entity $entity): Entity
+    {
+        return $entity->refresh();
+    }
+
     public function create(array $attributes): Entity
     {
         return $this->entity->create($attributes);

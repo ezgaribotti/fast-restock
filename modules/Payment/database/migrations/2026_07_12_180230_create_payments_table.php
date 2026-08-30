@@ -13,11 +13,10 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Order::class)->constrained();
-            $table->string('external_id')->comment('Identifier from the external payment provider.');
+            $table->string('reference_id')->comment('Reference used to look up this payment at the provider.');
             $table->string('status')->default(PaymentStatus::Pending->value);
             $table->decimal('total_amount');
             $table->string('url');
-            $table->timestamp('expires_at');
             $table->timestamp('paid_at')->nullable();
             $table->timestamps();
         });

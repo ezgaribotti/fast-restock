@@ -2,9 +2,13 @@
 
 namespace Modules\Payment\src\Interfaces;
 
-use Carbon\CarbonInterface;
+use Modules\Payment\src\Data\PaymentAttempt;
 
 interface PaymentStrategyInterface
 {
-    public function pay(array $lineItems, CarbonInterface $expiresAt, string $returnUrl): array;
+    public function pay(array $lineItems, string $returnUrl): PaymentAttempt;
+
+    public function retrieve(string $referenceId): PaymentAttempt;
+
+    public function expire(string $referenceId): void;
 }

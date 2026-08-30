@@ -14,10 +14,9 @@ class PaymentFactory extends Factory
     {
         return [
             'order_id' => Order::factory(),
-            'external_id' => fake()->uuid(),
+            'reference_id' => fake()->uuid(),
             'total_amount' => fake()->randomFloat(2, 1000, 9000),
             'url' => fake()->url(),
-            'expires_at' => fake()->dateTime(),
         ];
     }
 }

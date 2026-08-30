@@ -13,11 +13,10 @@ class Payment extends Entity
 
     protected $fillable = [
         'order_id',
-        'external_id',
+        'reference_id',
         'status',
-        'total_amount',
         'url',
-        'expires_at',
+        'total_amount',
         'paid_at',
     ];
 

@@ -4,9 +4,9 @@ namespace App\Repositories;
 
 use App\Entities\Entity;
 use App\Interfaces\RepositoryInterface;
-use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\Paginator;
 
 abstract class Repository implements RepositoryInterface
 {
@@ -35,7 +35,7 @@ abstract class Repository implements RepositoryInterface
                 is_null($value)
                     ? $query->whereNull($key) : $query->where($key, $value);
             }
-        })->simplePaginate($perPage);
+        })->simplePaginate((int) $perPage);
     }
 
     public function find($id): ?Entity
@@ -46,6 +46,11 @@ abstract class Repository implements RepositoryInterface
     public function findOrFail($id): Entity
     {
         return $this->entity->findOrFail($id);
+    }
+
+    public function refresh(Entity $entity): Entity
+    {
+        return $entity->refresh();
     }
 
     public function create(array $attributes): Entity

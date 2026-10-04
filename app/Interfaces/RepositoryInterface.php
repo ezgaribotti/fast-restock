@@ -3,8 +3,8 @@
 namespace App\Interfaces;
 
 use App\Entities\Entity;
-use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\Paginator;
 
 interface RepositoryInterface
 {
@@ -15,6 +15,8 @@ interface RepositoryInterface
     public function find($id): ?Entity;
 
     public function findOrFail($id): Entity;
+
+    public function refresh(Entity $entity): Entity;
 
     public function create(array $attributes): Entity;
 

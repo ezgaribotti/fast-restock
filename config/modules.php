@@ -14,6 +14,11 @@ return [
 
     'providers' => [
         Modules\Common\CommonServiceProvider::class,
+        Modules\Auth\AuthServiceProvider::class,
+        Modules\Customer\CustomerServiceProvider::class,
+        Modules\Inventory\InventoryServiceProvider::class,
+        Modules\Order\OrderServiceProvider::class,
+        Modules\Payment\PaymentServiceProvider::class,
     ],
 
 ];

@@ -4,5 +4,4 @@ return [
     App\Providers\AppServiceProvider::class,
     App\Providers\ModuleServiceProvider::class,
     App\Providers\ScrambleServiceProvider::class,
-    App\Providers\FakerServiceProvider::class,
 ];

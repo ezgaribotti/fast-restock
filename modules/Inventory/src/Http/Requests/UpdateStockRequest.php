@@ -1,0 +1,21 @@
+<?php
+
+namespace Modules\Inventory\src\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class UpdateStockRequest extends FormRequest
+{
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    public function rules(): array
+    {
+        return [
+            'quantity' => 'required|integer|min:0',
+            'picking_location' => 'required',
+        ];
+    }
+}
